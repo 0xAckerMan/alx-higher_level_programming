@@ -4,7 +4,6 @@
  * check_cycle - checks if a singly linked list has a cycle in it
  * @list: *p -> the list
  * Return: 0 || 1
- *
  */
 
 int check_cycle(listint_t *list)
@@ -22,11 +21,11 @@ int check_cycle(listint_t *list)
 		if (list == p2)
 		{
 			list = prev;
-			prev = p2;
+			prev =  p2;
 			while (1)
 			{
 				p2 = prev;
-				while p2->next != list && p2->next != prev)
+				while (p2->next != list && p2->next != prev)
 				{
 					p2 = p2->next;
 				}
@@ -36,8 +35,8 @@ int check_cycle(listint_t *list)
 				list = list->next;
 			}
 			return (1);
-
 		}
 	}
+
 	return (0);
 }

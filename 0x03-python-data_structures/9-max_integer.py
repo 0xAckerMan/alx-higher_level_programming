@@ -3,12 +3,12 @@
 def max_integer(my_list=[]):
     if len(my_list) == 0:
         return None
-    else:
-        big_no = my_list[0]
-        for number in my_list:
-            if number > big_no:
-                big_no = number
-        return big_no
+
+    big_no = my_list[0]
+    for number in my_list:
+        if number > big_no:
+            big_no = number
+    return big_no
 
 
 if __name__ == "__main__":

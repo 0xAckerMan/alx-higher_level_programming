@@ -3,4 +3,5 @@
 
 
 class Square:
+    '''This is the class'''
     ...

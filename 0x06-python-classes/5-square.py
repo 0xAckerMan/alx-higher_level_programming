@@ -22,9 +22,11 @@ class Square:
         self.__size = value
 
     def area(self):
+        '''Calc square area'''
         return(self.__size ** 2)
 
     def my_print(self):
+        '''Prints a square'''
         if (self.__size == 0):
             print('')
         

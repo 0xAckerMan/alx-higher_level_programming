@@ -6,6 +6,7 @@ area func
 
 
 class Square:
+    ''' The class implementation'''
     def __init__(self, size=0):
         self.size = size
 

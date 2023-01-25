@@ -1,26 +1,54 @@
 #!/usr/bin/python3
-'''
-Defines a class sqaure checks its attribute with
-area func
-'''
+# '''
+# Defines a class sqaure checks its attribute with
+# area func
+# '''
+
+
+# class Square:
+#     ''' The class implementation'''
+#     def __init__(self, size=0):
+#         self.size = size
+
+#         @property
+#         def size(self):
+#             return self.__size
+
+#         @size.setter
+#         def size(self, value):
+#             if type(value) != int:
+#                 raise TypeError('size must be an integer')
+#             elif size < 0:
+#                 raise ValueError('size must be >= 0')
+#             self.__size = size
+
+#         def area(self):
+#             return (self.__size ** 2)
+
+
+"""
+This module defines a Square class
+Its implements value and type checks for its attributes with area function
+"""
 
 
 class Square:
-    ''' The class implementation'''
+    """Square implementation
+    """
     def __init__(self, size=0):
         self.size = size
 
-        @property
-        def size(self):
-            return self.__size
+    @property
+    def size(self):
+        return self.__size
 
-        @size.setter
-        def size(self, value):
-            if type(value) != int:
-                raise TypeError('size must be an integer')
-            elif size < 0:
-                raise ValueError('size must be >= 0')
-            self.__size = size
+    @size.setter
+    def size(self, size):
+        if type(size) != int:
+            raise TypeError('size must be an integer')
+        elif size < 0:
+            raise ValueError('size must be >= 0')
+        self.__size = size
 
-        def area(self):
-            return (self.__size ** 2)
+    def area(self):
+        return (self.__size ** 2)

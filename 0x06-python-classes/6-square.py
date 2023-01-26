@@ -38,6 +38,8 @@ class Square:
         return (self.__size ** 2)
 
     def my_print(self):
+        """prints a square  with the corresponding size
+        """
         if (self.__size == 0):
             print('')
         else:

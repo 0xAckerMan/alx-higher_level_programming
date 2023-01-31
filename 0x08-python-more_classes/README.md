@@ -3,15 +3,16 @@
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
-[] Why python is awesome
-[] What is OOP
-[] What is a class
-[] What is an object and an instance
-[] What is the difference between a class and an object or instance
-[] What is an attribute
-[] What are and how to use public, protected and private attributes
-[] What is self
-[] What is a method
+```
+Why python is awesome
+What is OOP
+What is a class
+What is an object and an instance
+What is the difference between a class and an object or instance
+What is an attribute
+What are and how to use public, protected and private attributes
+What is self
+What is a method
 What is the special __init__ method and how to use it
 What is Data Abstraction, Data Encapsulation, and Information Hiding
 What is a property
@@ -28,3 +29,4 @@ How to bind attributes to object and classes
 What is and what does contain __dict__ of a class and of an instance of a class
 How does Python find the attributes of an object or class
 How to use the getattr function
+```

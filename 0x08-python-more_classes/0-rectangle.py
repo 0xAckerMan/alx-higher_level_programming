@@ -5,4 +5,5 @@ This is an empty class
 
 
 class Rectangle():
+    '''Class implementation'''
     ...

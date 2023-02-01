@@ -44,7 +44,7 @@ class Rectangle():
         output = ''
         if self.__width == 0 or self.__height == 0:
             return output
-        
+
         for i in range(self.__height):
             output += ('#' * self.__width)
             if i != self.__height - 1:

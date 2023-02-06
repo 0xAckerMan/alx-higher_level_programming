@@ -9,4 +9,6 @@ from the specified class ; otherwise False.
 def inherits_from(obj, a_class):
     '''Function implementation'''
 
-    return type(obj) != a_class and issubclass(type(obj), a_class)
+    if issubclass(type(obj), a_class) and type(obj) != a_class:
+        return True
+    return False

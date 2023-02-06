@@ -8,12 +8,26 @@ class BaseGeometry:
     '''Class implementation'''
 
     def area(self):
+        """
+        Calculates area of the geometry
+        """
+
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        '''Public instance attribute'''
+        """check value
+        Args:
+            name (str): value designation
+            value (any): value to check
+        Raises:
+            TypeError: value must be an integer
+            ValueError: value must be greater than 0
+        """
 
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(value))
-        elif value < 0:
-            raise ValueError("{} must be greater than 0".format(value))
+        self.name = name
+        self.value = value
+
+        if type(self.value) != int:
+            raise TypeError("{} must be an integer".format(name))
+        elif self.value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))

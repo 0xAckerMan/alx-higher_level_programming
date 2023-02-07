@@ -1,54 +1,45 @@
 #!/usr/bin/python3
 
-"""reads stdin line by line and computes metrics"""
-from sys import stdin
+"""
+101-stats Module
+"""
 
+if __name__ == '__main__':
 
-def print_metrics(size, status_codes):
-    """
-    Prints accumulated metrics.
-    Args:
-        size (int): The accumulated read file size.
-        status_codes (dict): The accumulated count of status codes.
-    """
-    print(f"File size: {size}")
-    for key in sorted(status_codes):
-        print(f"{key}: {status_codes[key]}")
+    import sys
 
+    file_size = 0
+    valid_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {k: 0 for k in valid_codes}
+    counter = 0
 
-if __name__ == "__main__":
+    def print_stats(stats: dict, file_size: int) -> None:
+        '''
+        func implementation
+        '''
 
-    size = 0
-    count = 0
-    status_codes = {}
-    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+        print("File size: {:d}".format(file_size))
+        for k, v in sorted(stats.items()):
+            if v:
+                print("{}: {}".format(k, v))
 
     try:
-        for line stdin:
-            if count == 10:
-                print_stats(size, status_codes)
-                count = 1
-            else:
-                count += 1
-
-            line = line.split()
-
+        for line in sys.stdin:
+            counter += 1
+            data = line.split()
             try:
-                size += int(line[-1])
-            except (IndexError, ValueError):
+                status_code = data[-2]
+                if status_code in stats:
+                    stats[status_code] += 1
+            except BaseException:
                 pass
-
             try:
-                if line[-2] in valid_codes:
-                    if status_codes.get(line[-2], -1) == -1:
-                        status_codes[line[-2]] = 1
-                    else:
-                        status_codes[line[-2]] += 1
-            except IndexError:
+                file_size += int(data[-1])
+            except BaseException:
                 pass
-
-        print_metrics(size, status_codes)
-
+            if counter % 10 == 0:
+                print_stats(stats, file_size)
+        print_stats(stats, file_size)
     except KeyboardInterrupt:
-        print_metrics(size, status_codes)
+        print_stats(stats, file_size)
         raise

@@ -1,45 +1,54 @@
 #!/usr/bin/python3
 
-"""
-101-stats Module
-"""
+"""reads stdin line by line and computes metrics"""
+from sys import stdin
 
-if __name__ == '__main__':
 
-    import sys
+def print_metrics(size, status_codes):
+    """
+    Prints accumulated metrics.
+    Args:
+        size (int): The accumulated read file size.
+        status_codes (dict): The accumulated count of status codes.
+    """
+    print(f"File size: {size}")
+    for key in sorted(status_codes):
+        print(f"{key}: {status_codes[key]}")
 
-    file_size = 0
-    valid_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-    stats = {k: 0 for k in valid_codes}
-    counter = 0
 
-    def print_stats(stats: dict, file_size: int) -> None:
-        '''
-        func implementation
-        '''
+if __name__ == "__main__":
 
-        print("File size: {:d}".format(file_size))
-        for k, v in sorted(stats.items()):
-            if v:
-                print("{}: {}".format(k, v))
+    size = 0
+    count = 0
+    status_codes = {}
+    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
 
     try:
-        for line in sys.stdin:
-            counter += 1
-            data = line.split()
+        for line stdin:
+            if count == 10:
+                print_stats(size, status_codes)
+                count = 1
+            else:
+                count += 1
+
+            line = line.split()
+
             try:
-                status_code = data[-2]
-                if status_code in stats:
-                    stats[status_code] += 1
-            except BaseException:
+                size += int(line[-1])
+            except (IndexError, ValueError):
                 pass
+
             try:
-                file_size += int(data[-1])
-            except BaseException:
+                if line[-2] in valid_codes:
+                    if status_codes.get(line[-2], -1) == -1:
+                        status_codes[line[-2]] = 1
+                    else:
+                        status_codes[line[-2]] += 1
+            except IndexError:
                 pass
-            if counter % 10 == 0:
-                print_stats(stats, file_size)
-        print_stats(stats, file_size)
+
+        print_metrics(size, status_codes)
+
     except KeyboardInterrupt:
-        print_stats(stats, file_size)
+        print_metrics(size, status_codes)
         raise

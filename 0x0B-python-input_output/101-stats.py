@@ -14,6 +14,10 @@ if __name__ == '__main__':
     counter = 0
 
     def print_stats(stats: dict, file_size: int) -> None:
+        '''
+        func implementation
+        '''
+
         print("File size: {:d}".format(file_size))
         for k, v in sorted(stats.items()):
             if v:

@@ -25,6 +25,7 @@ class BaseGeometry:
             TypeError: if @value is not an integer
             ValueError: if @value <= 0
         """
+
         self.name = name
         self.value = value
         if not isinstance(self.value, int):

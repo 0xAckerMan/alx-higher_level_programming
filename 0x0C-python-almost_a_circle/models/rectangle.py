@@ -116,3 +116,14 @@ class Rectangle(Base):
 
         return (f'[Rectangle] ({self.id}) {self.__x}/{self.__y}'
                 f' - {self.__width}/{self.__height}')
+
+    def update(self, *args):
+        '''Uses abitrary atgurments'''
+
+        expect = (self.id, self.width, self.height, self.x, self.y)
+        if args != ():
+            self.id, self.width, self.height, self.x, self.y = \
+                args + expect[len(args):len(expect)]
+        elif kwargs:
+            for (name, value) in kwargs.items():
+                setattr(self, name, value)

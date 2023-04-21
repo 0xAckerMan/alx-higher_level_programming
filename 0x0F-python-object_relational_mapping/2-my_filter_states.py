@@ -1,27 +1,26 @@
 #!/usr/bin/python3
-'''
-Filter states by user
-'''
-
+"""List all states where 'name' matches the argument
+Username, password, database name, and state name given as user args
+"""
+import sys
 import MySQLdb
-from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host='localhost',
-                         user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3],
+    db = MySQLdb.connect(user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3],
+                         host='localhost',
                          port=3306)
-    cursor = db.cursor()
-    command = """SELECT id, name
-    FROM states
-    WHERE name LIKE BINARY '{}'
-    ORDER BY id ASC""", format(argv[4])
-    cursor.execute(command)
-    rows = cursor.fetchall()
+    cur = db.cursor()
+    cmd = """SELECT id, name
+         FROM states
+         WHERE name LIKE BINARY '{}'
+         ORDER BY id ASC""".format(sys.argv[4])
+    cur.execute(cmd)
+    nStates = cur.fetchall()
 
-    for row in rows:
-        print(row)
+    for state in nStates:
+        print(state)
 
-    cursor.close()
+    cur.close()
     db.close()

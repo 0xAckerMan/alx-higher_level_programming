@@ -18,15 +18,17 @@ module.exports = class Rectangle {
       }
       console.log(temp);
     }
-  };
-  rotate() {
+  }
+
+  rotate () {
     const newHeight = this.width;
     const newWidth = this.height;
     this.height = newHeight;
     this.width = newWidth;
-  };
-  double() {
+  }
+
+  double () {
     this.width *= 2;
     this.height *= 2;
-  };
+  }
 };

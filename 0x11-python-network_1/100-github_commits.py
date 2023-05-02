@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 lists 10 commits of a given repo
-in order of latest to oldest
+in order of latest
 """
 import sys
 import requests

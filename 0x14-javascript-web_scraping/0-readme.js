@@ -1,11 +1,22 @@
+#!/usr/bin/node
+// reads a file
+
 const fs = require('fs');
 
-const file = process.argv[2];
+function readAndPrintFile (filePath) {
+  fs.readFile(filePath, 'utf-8', (err, content) => {
+    if (err) {
+      console.error('An error occurred while reading the file:');
+      console.error(err);
+    } else {
+      console.log(content);
+    }
+  });
+}
 
-fs.readFile(file, 'utf-8', function (err, data) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(data);
-  }
-});
+if (process.argv.length !== 3) {
+  console.error('Usage: node script.js <file_path>');
+} else {
+  const filePath = process.argv[2];
+  readAndPrintFile(filePath);
+}
